@@ -11,4 +11,10 @@ describe('Exercise using checkbox, dropdown list, etc', () => {
         //Selecting checkbox by it ID and checking only checkboxes with value ['option2','option3']
         cy.get("input[type='checkbox']").check(['option2','option3'])
     });
+
+    it('static dropdown list', () => {
+        cy.visit('https://rahulshettyacademy.com/AutomationPractice')
+        cy.get('#dropdown-class-example').select('option2').should('have.value', 'option2')
+    });
+
 });
