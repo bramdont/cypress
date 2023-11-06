@@ -14,7 +14,23 @@ describe('Exercise using checkbox, dropdown list, etc', () => {
 
     it('static dropdown list', () => {
         cy.visit('https://rahulshettyacademy.com/AutomationPractice')
+        //Using the method .select() to choose an option from the dropdown list, and verifying the selected option
         cy.get('#dropdown-class-example').select('option2').should('have.value', 'option2')
     });
 
+    it('Dynamic dropdown list', () => {
+        cy.visit('https://rahulshettyacademy.com/AutomationPractice')
+
+        //Typing to bring options to the dropdown list
+        cy.get('input#autocomplete').type('dom')
+
+        //Iterating all values to look for the one we want to choose
+        cy.get('.ui-menu-item div').each(($el,index,$list) =>{
+            if($el.text()==='Dominican Republic'){
+                cy.wrap($el).click();
+            }
+        })
+        //Assertion to validate the selected value is Domincan Republick
+        cy.get('input#autocomplete').should('have.value', 'Dominican Republic')
+    });
 });
