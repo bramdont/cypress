@@ -1,2 +1,2 @@
 #Ignore the following files / path
-cypress/node_modules/*
+node_modules/*
