@@ -1,10 +1,10 @@
 /// <reference types="Cypress" />
 
-describe('My First Test', () => {
-    it('Visit JW Web site', () => {
+describe('My First Test suite', () => {
+    it('Visit the Web site', () => {
       cy.visit('https://rahulshettyacademy.com/seleniumPractise/#/');
       cy.wait(1000);
-      //cy.visit('https://jw.org/es');
+
       cy.get('.search-keyword').type('ca')
       cy.wait(2000);
       //To find only visibles elements of a particular class [cy.get('.product:visible')]
