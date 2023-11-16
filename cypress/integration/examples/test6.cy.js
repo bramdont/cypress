@@ -1,4 +1,6 @@
 /// <reference types="Cypress" />
+import HomePage from "../PageObjects/HomePage";
+import ProductPage from "../PageObjects/ProductPage";
 
 var pageData = null
 describe('Workin with Fixtures and Custom commands', () => {
@@ -25,14 +27,27 @@ describe('Workin with Fixtures and Custom commands', () => {
     }) */
 
     it('My first testcase', () => {
-        cy.get('input[name="name"]:nth-child(2)').type(pageData.name)
-        cy.get('select').select(pageData.gender)
-        cy.get(':nth-child(4) > .ng-untouched').should('have.value', pageData.name)
-        cy.get('input[name="name"]:nth-child(2)').should('have.attr', 'minlength','2')
-        cy.get('#inlineRadio3').should('be.disabled')
+        const homePage = new HomePage();
+        const productPage = new ProductPage();
+        homePage.getEditBox().type(pageData.name)
+        homePage.getGender().select(pageData.gender)
+        homePage.getTwoWaysDataBinding().should('have.value', pageData.name)
+        homePage.getEditBox().should('have.attr', 'minlength','2')
+        homePage.getEnterprenear().should('be.disabled')
+        homePage.getShopTab().click()
 
-        cy.get(':nth-child(2) > .nav-link').click()
-        cy.selectProduct('Nokia')
+        pageData.productName.forEach((element)=>{
+            cy.selectProduct(element)
+        })
+
+        productPage.checkoutBtn().click()
+        productPage.productPageCheckoutBtn().click()
+        productPage.countryTextBox().type('United State')
+        productPage.selectCountry().click()
+        productPage.selectCountry().click()
+        productPage.termsAndConditionCheckbox().check({force:true})
+        productPage.purchaseBtn().click()
+
 
     });
 });
