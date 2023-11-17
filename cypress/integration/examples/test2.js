@@ -1,6 +1,9 @@
 /// <reference types="Cypress" />
 
 describe('My Second Test Suite', () => {
+  afterEach(() => {
+    cy.screenshot()
+  });
     it('Proceed with order checkout ', () => {
       cy.visit('https://rahulshettyacademy.com/seleniumPractise/#/');
       cy.get('.search-keyword').type('ca')

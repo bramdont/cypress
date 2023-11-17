@@ -4,7 +4,9 @@ describe('Managing PopUp and child window', () => {
     beforeEach(() => {
         cy.visit('https://rahulshettyacademy.com/AutomationPractice/');
     });
-
+    afterEach(() => {
+        cy.screenshot()
+      });
     it('Managing alert', () => {
         cy.get('#alertbtn').click()
         cy.get('#confirmbtn').click()

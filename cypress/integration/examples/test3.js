@@ -1,6 +1,9 @@
 /// <reference types="Cypress" />
 
 describe('Exercise using checkbox, dropdown list, etc', () => {
+    afterEach(() => {
+        cy.screenshot()
+      });
     it('Using checkbox', () => {
         cy.visit('https://rahulshettyacademy.com/AutomationPractice')
         //Selecting checkbox by it ID, mark it as checked, and verifying if checked and the value is option1

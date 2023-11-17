@@ -1,6 +1,9 @@
 /// <reference types="Cypress" />
 
 describe('My First Test suite', () => {
+  afterEach(() => {
+    cy.screenshot()
+  });
     it('Visit the Web site', () => {
       cy.visit('https://rahulshettyacademy.com/seleniumPractise/#/');
       cy.wait(1000);

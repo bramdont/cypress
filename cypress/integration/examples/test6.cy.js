@@ -10,7 +10,9 @@ describe('Workin with Fixtures and Custom commands', () => {
             pageData=data
         })
     })
-
+    afterEach(() => {
+        cy.screenshot()
+      });
     /*before(function () {
         // runs once before all tests in the block
         cy.visit('https://rahulshettyacademy.com/angularpractice/')

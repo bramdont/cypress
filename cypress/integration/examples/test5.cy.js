@@ -6,6 +6,9 @@ describe('Handling iframes', () => {
     beforeEach(() => {
         cy.visit('https://rahulshettyacademy.com/AutomationPractice/');
     });
+    afterEach(() => {
+        cy.screenshot()
+      });
     it('First testcase', () => {
         //To tell cypress it will work with an iframe
         cy.frameLoaded('#courses-iframe')
