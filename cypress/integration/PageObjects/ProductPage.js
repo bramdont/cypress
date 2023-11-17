@@ -18,6 +18,14 @@ class ProductPage {
     purchaseBtn(){
         return cy.get('input[type=submit]')
     }
-
+    getSuccessMessage(){
+        return cy.get('.alert')
+    }
+    getSubtotal(){
+        return cy.get('tr td:nth-child(4) strong')
+    }
+    getTotal(){
+        return cy.get('.text-right > h3')
+    }
 }
 export default ProductPage;
