@@ -6,7 +6,7 @@ var pageData = null
 describe('Workin with Fixtures and Custom commands', () => {
     before(()=>{
         cy.visit('https://rahulshettyacademy.com/angularpractice/')
-        cy.fixture('example').then((data)=>{
+        cy.fixture('example').then(function (data){
             pageData=data
         })
     })
