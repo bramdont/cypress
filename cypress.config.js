@@ -4,7 +4,7 @@ const preprocessor = require("@badeball/cypress-cucumber-preprocessor");
 const browserify = require("@badeball/cypress-cucumber-preprocessor/browserify");
 
 async function setupNodeEvents(on, config) {
-  require('cypress-mochawesome-reporter/plugin')(on)
+  require('cypress-mochawesome-reporter/plugin')(on);
   // This is required for the preprocessor to be able to generate JSON reports after each run, and more,
   await preprocessor.addCucumberPreprocessorPlugin(on, config);
   on("file:preprocessor", browserify.default(config));
@@ -13,7 +13,12 @@ async function setupNodeEvents(on, config) {
 }
 module.exports = defineConfig({
   reporter: 'cypress-mochawesome-reporter',
-  
+  video: false,
+  reporterOptions: {
+    overwrite: true,
+    html: true,
+    json: true
+  },
   e2e: {
     setupNodeEvents,
     env : {
